@@ -54,6 +54,16 @@ export default new Vuex.Store({
       commit('setUserProfile', {})
       router.push('/login')
     },
+    async createPost({ state }, post) {
+      await fb.postsCollection.add({
+        createdOn: new Date(),
+        content: post.content,
+        userId: fb.auth.currentUser.uid,
+        userName: state.userProfile.name,
+        comments: 0,
+        likes: 0
+      })
+    }
     
 
   },
