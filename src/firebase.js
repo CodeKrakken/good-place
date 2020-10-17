@@ -4,10 +4,10 @@ import 'firebase/firestore'
 
 // firebase init - add your own config here
 const firebaseConfig = {
-  apiKey: '',
+  apiKey: 'AIzaSyCFhCVbWneAF5kt6g4Bg8KTBGebO8VV7K0',
   authDomain: '',
   databaseURL: '',
-  projectId: '',
+  projectId: 'good-place-79cdc',
   storageBucket: '',
   messagingSenderId: '',
   appId: ''
