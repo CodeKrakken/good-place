@@ -45,7 +45,14 @@ export default new Vuex.Store({
       // fetch user profile and set in state
       dispatch('fetchUserProfile', user)
     },
+    async logout({ commit }) {
+      await fb.auth.signOut()
     
+      // clear userProfile and redirect to /login
+      commit('setUserProfile', {})
+      router.push('/login')
+    }
+
   },
   modules: {
   }
