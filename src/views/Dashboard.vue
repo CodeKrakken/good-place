@@ -8,7 +8,7 @@
           <div class="create-post">
             <p>create a post</p>
             <form @submit.prevent>
-              <textarea></textarea>
+              <textarea v-model="post.content"></textarea>
               <button @click="createPost()" class="button">post</button>
             </form>
           </div>
