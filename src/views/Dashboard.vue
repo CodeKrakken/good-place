@@ -25,7 +25,7 @@
             <p>{{ post.content | trimLength }}</p>
             <ul>
               <li ><a @click="toggleCommentModal(post)">comments {{ post.comments }}</a></li>
-              <li><a>likes {{ post.likes }}</a></li>
+              <li><a @click="likePost(post.id, post.likes)">likes {{ post.likes }}</a></li>
               <li><a>view full post</a></li>
             </ul>
           </div>
@@ -72,6 +72,9 @@ export default {
       } else {
         this.selectedPost = {}
       }
+    }, 
+    likePost(id, likesCount) {
+      this.$store.dispatch('likePost', { id, likesCount })
     }
   }, 
   filters: {
