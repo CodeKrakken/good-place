@@ -18,7 +18,7 @@
         <div v-if="posts.length">
           <div v-for="post in posts" :key="post.id" class="post">
             <h5>{{ post.userName }}</h5>
-            <span>{{ fullPost.createdOn | formatDate }}</span>
+            <span>{{ post.createdOn | formatDate }}</span>
             <p>{{ post.content | trimLength }}</p>
             <ul>
               <li><a>comments {{ post.comments }}</a></li>
