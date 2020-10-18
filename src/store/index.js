@@ -5,16 +5,21 @@ import router from '../router/index'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
-    userProfile: {}
+    userProfile: {},
+    posts: []
   },
   mutations: {
     setUserProfile(state, val) {
       state.userProfile = val
+    },
+    setPosts(state, val) {
+      state.posts = val
     }
   },
   actions: {
+    
     async login({ dispatch }, form) {
       // sign user in
       const { user } = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
@@ -69,4 +74,19 @@ export default new Vuex.Store({
   },
   modules: {
   }
+})
+
+export default store
+
+fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
+  let postsArray = []
+
+  snapshot.forEach(doc => {
+    let post = doc.data()
+    post.id = doc.id
+
+    postsArray.push(post)
+  })
+
+  store.commit('setPosts', postsArray)
 })
